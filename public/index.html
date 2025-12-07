@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Scanner Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blobs"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Port Scanner <span class="accent">Pro</span></h1>
+            <p>Advanced Network Reconnaissance Tool</p>
+        </header>
+
+        <main>
+            <div class="glass-panel control-panel">
+                <div class="input-group">
+                    <label for="ip">Target IP / Range / CIDR</label>
+                    <input type="text" id="ip" placeholder="e.g. 192.168.1.1 or 192.168.1.0/24" value="127.0.0.1">
+                </div>
+
+                <div class="input-group">
+                    <label for="ports">Ports</label>
+                    <input type="text" id="ports" placeholder="e.g. 80, 443, 1-1000" value="22,80,443,3000,8080">
+                </div>
+
+                <div class="settings-row">
+                    <div class="input-group">
+                        <label for="speed">Speed</label>
+                        <select id="speed">
+                            <option value="slow">Slow (Stealth)</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="fast">Fast (Aggressive)</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="timeout">Timeout (ms)</label>
+                        <input type="number" id="timeout" value="500">
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <button id="startBtn" class="btn primary">Start Scan</button>
+                    <button id="stopBtn" class="btn danger" disabled>Stop</button>
+                </div>
+            </div>
+
+            <div class="glass-panel results-panel">
+                <div class="results-header">
+                    <h2>Scan Results</h2>
+                    <div class="stats">
+                        <span id="status">Ready</span>
+                        <span id="progress">0%</span>
+                    </div>
+                </div>
+                <div class="results-list" id="resultsList">
+                    <!-- Results will appear here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
